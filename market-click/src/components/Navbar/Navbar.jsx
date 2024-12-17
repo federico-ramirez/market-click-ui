@@ -16,8 +16,8 @@ const Navbar = () => {
                 <div className="w-fit justify-self-start p-2">
                     <p className="text-white">Market Click</p>
                 </div>
-                <div className="w-fit justify-self-end p-2">
-                    <button type='button' onClick={toggleSideBar} className="text-white hover:bg-violet-400 rounded-md self-center">
+                <div className="w-fit justify-self-end">
+                    <button type='button' onClick={toggleSideBar} className="p-2 text-white hover:bg-violet-400 rounded-md self-center">
                         <span ><i><MenuIcon /></i></span>
                     </button>
                 </div>
