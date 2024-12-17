@@ -1,0 +1,30 @@
+import { useState } from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
+import Sidebar from '../Sidebar/Sidebar';
+
+const Navbar = () => {
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    const toggleSideBar = () => {
+        setIsVisible(!isVisible);
+    }
+
+    return (
+        <div>
+            <nav className="w-screen min-h-fit h-10 grid grid-flow-col justify-items-stretch p-3 bg-violet-900 bg-fixed">
+                <div className="w-fit justify-self-start p-2">
+                    <p className="text-white">Market Click</p>
+                </div>
+                <div className="w-fit justify-self-end p-2">
+                    <button type='button' onClick={toggleSideBar} className="text-white hover:bg-violet-400 rounded-md self-center">
+                        <span ><i><MenuIcon /></i></span>
+                    </button>
+                </div>
+            </nav>
+            {isVisible && (<Sidebar />)}
+        </div>
+    )
+}
+
+export default Navbar;
