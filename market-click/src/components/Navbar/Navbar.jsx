@@ -11,8 +11,8 @@ const Navbar = () => {
     }
 
     return (
-        <div>
-            <nav className="w-screen min-h-fit h-10 grid grid-flow-col justify-items-stretch p-3 bg-violet-900 bg-fixed">
+        <div className='w-full'>
+            <nav className="w-screen min-h-fit h-10 grid grid-flow-col justify-items-stretch p-3 bg-violet-900 fixed top-0 z-50">
                 <div className="w-fit justify-self-start p-2">
                     <p className="text-white">Market Click</p>
                 </div>
