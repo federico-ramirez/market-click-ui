@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import image1 from '../../assets/carousel1.jpg';
 import image2 from '../../assets/carousel2.jpg';
 import image3 from '../../assets/carousel3.jpg';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Carousel = () => {
     const [currentImage, setCurrentImage] = useState(0);
@@ -10,7 +12,7 @@ const Carousel = () => {
         "¡Bienvenido a Market Click!",
         "El mejor marketplace online para vender tu ropa",
         "Descubre nuestra exclusiva selección de ropa pre-loved"
-    ]
+    ];
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -18,7 +20,15 @@ const Carousel = () => {
         }, 5000)
 
         return () => clearInterval(interval)
-    }, [])
+    }, []);
+
+    const prevImageHandler = (() => {
+        setCurrentImage((prevImage) => (prevImage - 1) % images.length)
+    });
+
+    const nextImageHandler = (() => {
+        setCurrentImage((prevImage) => (prevImage + 1) % images.length)
+    });
 
     return (
         <div className="pt-16">
@@ -29,8 +39,14 @@ const Carousel = () => {
                             <div key={index} className="w-full flex-shrink-0 relative">
                                 <img src={image} alt={`Carousel Image ${index + 1}`} className="w-full h-96 object-fill" />
                                 <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                                <div className="absolute top-1/2 left-8 transform -translate-x-1/2 -translate-y-1/2">
+                                    <button className="p-3 text-white hover:rounded-full hover:bg-black hover:bg-opacity-20" type="button" onClick={prevImageHandler} disabled={!(index > 0)}><ArrowBackIosNewIcon /></button>
+                                </div>
                                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white lg:text-5xl sm:text-2xl md:text-3xl font-bold">
                                     {imageTexts[index]}
+                                </div>
+                                <div className="absolute top-1/2 -right-4 transform -translate-x-1/2 -translate-y-1/2">
+                                    <button className="p-3 text-white hover:rounded-full hover:bg-black hover:bg-opacity-20" type="button" onClick={nextImageHandler} disabled={((index + 1) >= images.length)}><ArrowForwardIosIcon /></button>
                                 </div>
                                 <div className="absolute bottom-4 left-0 right-0 flex justify-center">
                                     {images.map((_, i) => (
